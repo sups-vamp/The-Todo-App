@@ -1,0 +1,92 @@
+.container-fluid{
+    padding:0;
+    overflow: hidden;
+}
+
+.navbar {
+    height: 10vh;
+    background-color: #2054bc;
+}
+
+.app-body {
+    
+    background-color: #f8f4fc;
+    height: 90vh;
+    overflow: auto;
+    padding: 0 10rem;
+}
+
+.heading{
+    padding: 3rem 0;
+}
+.align-left{
+    text-align: left;
+}
+
+.align-right{
+    text-align:right;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn{
+    padding: 0.5rem 1rem;
+    background-color: #2054bc;
+    color: #fff;
+    height: 3rem;
+    font-size: large;
+}
+
+.search i {
+    position: absolute;
+    font-size: x-large;
+    padding: 10px;
+    color: darkgrey;
+}
+  
+.search {
+    width: 100%;
+    margin-bottom: 10px;
+}
+  
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
+  
+.input-field {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 30px;
+    color: darkgrey;
+    border: 1px solid darkgrey;
+}
+input[type="text"]:focus-visible{
+    border:none;
+}
+
+.modal-content {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+  }
+
+  .container-box {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid lightgrey;
+    margin: 2rem 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px lightgrey;
+}
+
+.title{
+    color: grey;
+    text-align: left;
+    padding: 1rem 1rem 0;
+
+}
