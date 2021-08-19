@@ -3,8 +3,8 @@ import Modal from "react-modal";
 import DatePicker from "react-datepicker";
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import dateFormatter from "../../utils/dateFormatter";
-
+import {dateFormatter} from "../../utils/dateFormatter";
+import moment from 'moment';
 
 export default function ModalDatePicker(props) {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -40,6 +40,7 @@ export default function ModalDatePicker(props) {
             onChange={(date) => setSelectedDate(date)}
             showTimeSelect
             format={"dd MMMM | HH:mm"}
+            minDate={moment().toDate()}
           />
         </div>
         <div className="modal-header">

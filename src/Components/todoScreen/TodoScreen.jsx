@@ -17,7 +17,7 @@ export default function TodoScreen() {
   const closeModal = () => {
     setModalIsOpen(false);
   };
-  const addTodo = (todo) => {
+  const addTodo = (todo, comment, date, day) => {
     let sno;
     closeModal();
 
@@ -27,6 +27,9 @@ export default function TodoScreen() {
     const myTodo = {
       sno: sno,
       desc: todo,
+      notes: comment,
+      reminder:date,
+      day: day
     };
     setTodos([...todos, myTodo]);
     setCompletedItems(
@@ -106,6 +109,9 @@ export default function TodoScreen() {
           }).map((todo) => (
             <TodoItems
               todoItem={todo.desc}
+              comment={todo.notes}
+              reminder={todo.reminder}
+              day={todo.day}
               deleteTodo={deleteTodo}
               completed={completedTodo}
             />

@@ -4,6 +4,8 @@ import "./UserInput.css";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {dateFormatter} from "../../utils/dateFormatter";
+import moment from 'moment';
 
 //addTodoOption
 //addCommentOption
@@ -13,15 +15,23 @@ export default function UserInput(props) {
     props.handlePromptOpen();
   };
 
-  const onChange = (e) => {
+  const onChangeTodo = (e) => {
     setTodoItem(e.target.value);
   };
 
+  const onChangeComment = (e) => {
+    setComment(e.target.value);
+  }
+
   const handleAdd = () => {
-    props.Add(todoItem);
+    props.Add(todoItem,comment,dateFormatter(selectedDate)[0],dateFormatter(selectedDate)[1]);
   };
 
   const [todoItem, setTodoItem] = useState("");
+  const [comment, setComment] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  
   return (
     <Modal
       isOpen={props.isOpen}
@@ -48,18 +58,20 @@ export default function UserInput(props) {
             <input
               type="text"
               className="input-field"
-              onChange={onChange}
+              onChange={onChangeTodo}
               value={todoItem}
             ></input>
             <label>Add a comment/description for your task:</label>
-            <input type="text" className="input-field"></input>
+            <input type="text" className="input-field" onChange={onChangeComment}
+              value={comment}></input>
             <label>Select a date as a reminder:</label>
             <DatePicker
               placeholderText="Click here to select date and time"
-              //selected={selectedDate}
-              //onChange={(date) => setSelectedDate(date)}
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
               showTimeSelect
               format={"dd MMMM | HH:mm"}
+              minDate={moment().toDate()}
             />
           </div>
         ) : null}
@@ -71,8 +83,8 @@ export default function UserInput(props) {
             <input
               type="text"
               className="input-field"
-              onChange={onChange}
-              value={todoItem}
+              onChange={onChangeComment}
+              value={comment}
             ></input>
           </div>
         ) : null}

@@ -50,8 +50,8 @@ export default function TodoItems(props) {
       <input type="radio" name="todo" onClick={handleClick}></input>
       <div class="info">
         <h4 ref={refTodo}>{props.todoItem}</h4>
-        <h5 className="comment">{comment}</h5>
-        <h6><span className={day === ""? "none":(day === 'Today'? "green":(day === 'Tomorrow'? "yellow":"red"))}></span><span className="reminder">{reminder}</span></h6>
+        <h5 className="comment">{props.comment}</h5>
+        <h6><span className={props.day === "" || props.day === undefined? "none":(props.day === 'Today'? "green":(props.day === 'Tomorrow'? "yellow":"red"))}></span><span className="reminder">{props.reminder}</span></h6>
       </div>
       <div className="edit-buttons">
         <div
@@ -77,10 +77,10 @@ export default function TodoItems(props) {
                 Delete
               </a>
               <a className="dropdown-item" href="#" onClick={openModalDate}>
-                Add reminder
+                Add/Edit reminder
               </a>
               <a className="dropdown-item" href="#" onClick={openModal}>
-                Add Comment
+                Add/Edit Comment
               </a>
               <ModalDatePicker
                 isOpen={dateModalIsOpen}
