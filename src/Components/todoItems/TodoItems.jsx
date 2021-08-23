@@ -3,6 +3,7 @@ import "./TodoItems.css";
 import { useState } from "react";
 import Modal from "../userInput/UserInput";
 import ModalDatePicker from "../datePicker/ModalDatePicker";
+import { dateFormatter } from "../../utils/dateFormatter";
 
 export default function TodoItems(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -36,7 +37,8 @@ export default function TodoItems(props) {
   }
 
   const handleClick = () => {
-    props.completed(props.sno,props.todoItem);
+    const completedDate = new Date();
+    props.completed(props.sno,props.todoItem, dateFormatter(completedDate)[0]);
   }
 
   return (

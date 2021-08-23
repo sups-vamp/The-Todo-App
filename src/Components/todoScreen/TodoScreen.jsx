@@ -10,7 +10,7 @@ export default function TodoScreen() {
   const [todos, setTodos] = useState([]);
   const [completedItems, setCompletedItems] = useState([]);
   const [searchVal, setSearchVal] = useState('');
-  
+  const [completionDate, setCompletionDate]=useState('');
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -64,7 +64,8 @@ export default function TodoScreen() {
     }
   };
 
-  const completedTodo = (doneItemSno,taskName) => {
+  const completedTodo = (doneItemSno,taskName,completedDate) => {
+    setCompletionDate(completedDate);
     setCompletedItems([...completedItems,taskName]);
     setTodos(
       todos.filter((todo) => {
@@ -145,7 +146,7 @@ export default function TodoScreen() {
           <div className="title">Completed</div>
           <hr></hr>
           {completedItems.map((completedItem) => (
-            <CompletedTodo completedItem={completedItem} Add={addTodo}/>
+            <CompletedTodo completedItem={completedItem} Add={addTodo} dateCompletion={completionDate}/>
           ))}
         </div>
       </div>

@@ -12,6 +12,8 @@ export default function CompletedTodo(props) {
       <i className="fa fa-ellipsis-v"></i>
       <input type="radio" name="todo" onClick={handleAdd}></input>
       <h4 class="completed-item" ref={refTodo}>{props.completedItem}</h4>
+      <i className="fa fa-circle"></i>
+      <span className="date-completion">Task finished : {props.dateCompletion}</span>
     </div>
   );
 }

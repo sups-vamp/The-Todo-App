@@ -1,24 +1,38 @@
 i {
     padding: 2px;
-  }
-  .fa {
+}
+
+.fa {
     font-size: x-large;
-  }
-  
-  input[type="radio"] {
+}
+
+input[type="radio"] {
     margin: 0.25rem 1rem;
     height: 20px;
     width: 20px;
     display: flex;
-    align-self: baseline;
-  }
+    /* align-self: center; */
+}
 
-  .completed-tasks-main{
-      display: flex;
-      padding: 1rem 2rem;
-  }
+.completed-tasks-main {
+    display: flex;
+    padding: 1rem 2rem;
+}
 
-  .completed-item{
+.completed-item {
     text-decoration: line-through;
     text-decoration-thickness: 3px;
-  }
+}
+
+.fa-circle {
+    font-size: small;
+    border-radius: 2px;
+    color: gray;
+    margin: auto 20px auto 40px;
+}
+
+.date-completion {
+    color: gray;
+    font-size: medium;
+    margin: auto 20px;
+}
