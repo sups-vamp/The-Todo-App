@@ -119,7 +119,7 @@ export default function TodoScreen() {
           </div>
         </div>
         <div className="container-box">
-          <div className="title">To do</div>
+          <div className="title">TO DO</div>
           <hr></hr>
           {todos.filter((val) => {
             if(searchVal === ""){
@@ -143,7 +143,7 @@ export default function TodoScreen() {
         </div>
         <hr></hr>
         <div className="container-box">
-          <div className="title">Completed</div>
+          <div className="title">COMPLETED</div>
           <hr></hr>
           {completedItems.map((completedItem) => (
             <CompletedTodo completedItem={completedItem} Add={addTodo} dateCompletion={completionDate}/>

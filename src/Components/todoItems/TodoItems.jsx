@@ -47,7 +47,7 @@ export default function TodoItems(props) {
       <i className="fa fa-ellipsis-v"></i>
       <input type="radio" name="todo" onClick={handleClick}></input>
       <div class="info">
-        <h4>{props.sno}{props.todoItem}</h4>
+        <h4>{props.todoItem}</h4>
         <h5 className="comment">{props.comment}</h5>
         <h6><span className={props.day === "" || props.day === undefined? "none":(props.day === 'Today'? "green":(props.day === 'Tomorrow'? "yellow":"red"))}></span><span className="reminder">{props.reminder}</span></h6>
       </div>

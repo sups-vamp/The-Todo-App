@@ -1,5 +1,5 @@
-.container-fluid{
-    padding:0;
+.container-fluid {
+    padding: 0;
     overflow: hidden;
 }
 
@@ -9,27 +9,27 @@
 }
 
 .app-body {
-    
     background-color: #f8f4fc;
     height: 90vh;
     overflow: auto;
     padding: 0 10rem;
 }
 
-.heading{
+.heading {
     padding: 3rem 0;
 }
-.align-left{
+
+.align-left {
     text-align: left;
 }
 
-.align-right{
-    text-align:right;
+.align-right {
+    text-align: right;
     display: flex;
     justify-content: flex-end;
 }
 
-.btn{
+.btn {
     padding: 0.5rem 1rem;
     background-color: #2054bc;
     color: #fff;
@@ -43,18 +43,19 @@
     padding: 10px;
     color: darkgrey;
 }
-  
+
 .search {
     width: 100%;
     margin-bottom: 10px;
 }
-  
+
 .icon {
     padding: 10px;
     min-width: 40px;
 }
-  
-.input-field {
+
+.input-field,
+.react-datepicker__input-container input {
     width: 100%;
     padding: 10px;
     text-align: center;
@@ -62,8 +63,9 @@
     color: darkgrey;
     border: 1px solid darkgrey;
 }
-input[type="text"]:focus-visible{
-    border:none;
+
+input[type="text"]:focus-visible {
+    border: none;
 }
 
 .modal-content {
@@ -73,9 +75,9 @@ input[type="text"]:focus-visible{
     bottom: auto;
     margin-right: -50%;
     transform: translate(-50%, -50%)
-  }
+}
 
-  .container-box {
+.container-box {
     width: 100%;
     background-color: #fff;
     border: 1px solid lightgrey;
@@ -84,9 +86,9 @@ input[type="text"]:focus-visible{
     box-shadow: 2px 2px 2px 2px lightgrey;
 }
 
-.title{
-    color: grey;
+.title {
+    color: rgb(36, 35, 35);
     text-align: left;
     padding: 1rem 1rem 0;
-
+    font-weight: bolder;
 }

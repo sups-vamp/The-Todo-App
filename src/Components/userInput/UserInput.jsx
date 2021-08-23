@@ -4,8 +4,8 @@ import "./UserInput.css";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {dateFormatter} from "../../utils/dateFormatter";
-import moment from 'moment';
+import { dateFormatter } from "../../utils/dateFormatter";
+import moment from "moment";
 
 //addTodoOption
 //addCommentOption
@@ -21,19 +21,18 @@ export default function UserInput(props) {
 
   const onChangeComment = (e) => {
     setComment(e.target.value);
-  }
+  };
 
   const handleAdd = () => {
     const date = dateFormatter(selectedDate)[0];
     const day = dateFormatter(selectedDate)[1];
-    props.Add(todoItem,comment,date,day);
+    props.Add(todoItem, comment, date, day);
   };
 
   const [todoItem, setTodoItem] = useState("");
   const [comment, setComment] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
 
-  
   return (
     <Modal
       isOpen={props.isOpen}
@@ -53,28 +52,38 @@ export default function UserInput(props) {
         </div>
         <hr></hr>
 
-        {/* --------All Options--------- */}
+        <form name="todo-form">
+          {/* --------All Options--------- */}
         {props.option === "addTodoOption" ? (
           <div className="message">
-            <label>Add the title of your task:</label>
-            <input
-              type="text"
-              className="input-field"
-              onChange={onChangeTodo}
-              value={todoItem}
-            ></input>
-            <label>Add a comment/description for your task:</label>
-            <input type="text" className="input-field" onChange={onChangeComment}
-              value={comment}></input>
-            <label>Select a date as a reminder:</label>
-            <DatePicker
-              placeholderText="Click here to select date and time"
-              selected={selectedDate}
-              onChange={(date) => setSelectedDate(date)}
-              showTimeSelect
-              format={"dd MMMM | HH:mm"}
-              minDate={moment().toDate()}
-            />
+            <form>
+              <label>Add the title of your task:</label>
+              <input
+                placeholder="Enter Todo title"
+                type="text"
+                className="input-field"
+                onChange={onChangeTodo}
+                value={todoItem}
+                required
+              ></input>
+              <label>Add a comment/description for your task:</label>
+              <input
+                placeholder="Enter a comment"
+                type="text"
+                className="input-field"
+                onChange={onChangeComment}
+                value={comment}
+              ></input>
+              <label>Select a date as a reminder:</label>
+              <DatePicker
+                placeholderText="Click here to select date and time"
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                showTimeSelect
+                format={"dd MMMM | HH:mm"}
+                minDate={moment().toDate()}
+              />
+            </form>
           </div>
         ) : null}
 
@@ -92,10 +101,11 @@ export default function UserInput(props) {
         ) : null}
 
         <div className="modal-header">
-          <button className="btn" onClick={handleAdd}>
+          <button type="submit" className="btn" onClick={handleAdd}>
             Add
           </button>
         </div>
+        </form>
       </div>
     </Modal>
   );
