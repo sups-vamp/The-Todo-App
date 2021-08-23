@@ -55,7 +55,6 @@ export default function TodoScreen() {
   const deleteTodo = (todoSno) => {
     setTodos(
       todos.filter((todo) => {
-        console.log("todo "+todo);
         return todo.sno !== todoSno;
       })
     );
@@ -63,7 +62,6 @@ export default function TodoScreen() {
     for(let i=todoSno;i<todos.length-1;i++){
       todos[i+1].sno = i;
     }
-    console.log(`left over todos: ${todos}`)
   };
 
   const completedTodo = (doneItemSno,taskName) => {
