@@ -1,17 +1,13 @@
 import React from "react";
 import "./TodoItems.css";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Modal from "../userInput/UserInput";
 import ModalDatePicker from "../datePicker/ModalDatePicker";
 
 export default function TodoItems(props) {
-  const [selected, setSelected] = useState("");
-  const [comment, setComment] = useState("");
-  const [reminder, setReminder] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dateModalIsOpen, setDateModalIsOpen] = useState(false);
-  const [day,setDay]= useState("");
-  const refTodo = useRef('');
+
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -26,30 +22,30 @@ export default function TodoItems(props) {
     setDateModalIsOpen(false);
   };
 
-  const addDate = (date, day) => {
-    setReminder(date);
-    setDay(day);
+  const addDate = (dateparam, dayparam) => {
+    closeModalDate();
+    props.Edit(props.sno,props.comment,dateparam,dayparam);
   };
-  const addTodo = (text) => {
-    setComment(text);
+  const addComment = (todo,text,day,date) => {
     closeModal();
+    props.Edit(props.sno,text,props.reminder,props.day);
   };
 
   const handleDelete = () => {
-   props.deleteTodo(refTodo.current.innerHTML);
+   props.deleteTodo(props.sno);
   }
 
   const handleClick = () => {
-    setSelected(refTodo.current.innerHTML);
-    props.completed(refTodo.current.innerHTML);
+    props.completed(props.sno,props.todoItem);
   }
+
   return (
     <div className="item">
       <i className="fa fa-ellipsis-v"></i>
       <i className="fa fa-ellipsis-v"></i>
       <input type="radio" name="todo" onClick={handleClick}></input>
       <div class="info">
-        <h4 ref={refTodo}>{props.todoItem}</h4>
+        <h4>{props.sno}{props.todoItem}</h4>
         <h5 className="comment">{props.comment}</h5>
         <h6><span className={props.day === "" || props.day === undefined? "none":(props.day === 'Today'? "green":(props.day === 'Tomorrow'? "yellow":"red"))}></span><span className="reminder">{props.reminder}</span></h6>
       </div>
@@ -73,25 +69,24 @@ export default function TodoItems(props) {
               aria-expanded="false"
             ></button>
             <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <a className="dropdown-item" href="#" onClick={handleDelete}>
+              <button className="dropdown-item" href="#" onClick={handleDelete}>
                 Delete
-              </a>
-              <a className="dropdown-item" href="#" onClick={openModalDate}>
+              </button>
+              <button className="dropdown-item" href="#" onClick={openModalDate}>
                 Add/Edit reminder
-              </a>
-              <a className="dropdown-item" href="#" onClick={openModal}>
+              </button>
+              <button className="dropdown-item" href="#" onClick={openModal}>
                 Add/Edit Comment
-              </a>
+              </button>
               <ModalDatePicker
                 isOpen={dateModalIsOpen}
                 handlePromptOpen={closeModalDate}
                 AddDate={addDate}
               ></ModalDatePicker>
-
               <Modal
                 isOpen={modalIsOpen}
                 handlePromptOpen={closeModal}
-                Add={addTodo}
+                Add={addComment}
                 text="Comment"
                 option="addCommentOption"
               ></Modal>

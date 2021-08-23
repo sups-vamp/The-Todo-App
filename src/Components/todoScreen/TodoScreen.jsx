@@ -10,6 +10,7 @@ export default function TodoScreen() {
   const [todos, setTodos] = useState([]);
   const [completedItems, setCompletedItems] = useState([]);
   const [searchVal, setSearchVal] = useState('');
+  
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -39,21 +40,42 @@ export default function TodoScreen() {
     );
   };
 
-  const deleteTodo = (todoName) => {
+  const editTodo = (sno,comment,date,day) => {
+    const tempTodos = todos;
+    tempTodos.map(t => {
+      if(t.sno === sno){
+        t.notes = comment;
+        t.reminder = date;
+        t.day = day;
+      }
+    })
+    setTodos(tempTodos);
+  }
+
+  const deleteTodo = (todoSno) => {
     setTodos(
       todos.filter((todo) => {
-        return todo.desc !== todoName;
+        console.log("todo "+todo);
+        return todo.sno !== todoSno;
       })
     );
+
+    for(let i=todoSno;i<todos.length-1;i++){
+      todos[i+1].sno = i;
+    }
+    console.log(`left over todos: ${todos}`)
   };
 
-  const completedTodo = (doneItem) => {
-    setCompletedItems([...completedItems, doneItem]);
+  const completedTodo = (doneItemSno,taskName) => {
+    setCompletedItems([...completedItems,taskName]);
     setTodos(
       todos.filter((todo) => {
-        return todo.desc !== doneItem;
+        return todo.sno !== doneItemSno;
       })
     );
+    for(let i=doneItemSno;i<todos.length-1;i++){
+      todos[i+1].sno = i;
+    }
   };
 
   const search = (e) => {
@@ -108,12 +130,15 @@ export default function TodoScreen() {
             }
           }).map((todo) => (
             <TodoItems
+              sno={todo.sno}
               todoItem={todo.desc}
               comment={todo.notes}
               reminder={todo.reminder}
               day={todo.day}
               deleteTodo={deleteTodo}
               completed={completedTodo}
+              Add={addTodo}
+              Edit={editTodo}
             />
           ))}
         </div>

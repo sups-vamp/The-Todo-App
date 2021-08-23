@@ -24,7 +24,9 @@ export default function UserInput(props) {
   }
 
   const handleAdd = () => {
-    props.Add(todoItem,comment,dateFormatter(selectedDate)[0],dateFormatter(selectedDate)[1]);
+    const date = dateFormatter(selectedDate)[0];
+    const day = dateFormatter(selectedDate)[1];
+    props.Add(todoItem,comment,date,day);
   };
 
   const [todoItem, setTodoItem] = useState("");

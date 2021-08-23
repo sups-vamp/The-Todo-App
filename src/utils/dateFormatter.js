@@ -1,6 +1,9 @@
 export function dateFormatter(selectedDate) {
     var day;
     var d;
+    var months = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
     let days = [
         "Sunday",
         "Monday",
@@ -33,7 +36,7 @@ export function dateFormatter(selectedDate) {
         ) {
             day = "Tomorrow";
         } else {
-            day = days[selectedDate.getDay()];
+            day = `${days[selectedDate.getDay()]}, ${months[selectedDate.getMonth()]} ${selectedDate.getDate()},`;
         }
         d = `${day} ${strTime}`;
     } else {
