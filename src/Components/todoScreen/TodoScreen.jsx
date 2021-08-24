@@ -41,15 +41,14 @@ export default function TodoScreen() {
   };
 
   const editTodo = (sno,comment,date,day) => {
-    const tempTodos = todos;
-    tempTodos.map(t => {
+    todos.map(t => {
       if(t.sno === sno){
         t.notes = comment;
         t.reminder = date;
         t.day = day;
       }
     })
-    setTodos(tempTodos);
+    setTodos([...todos]);
   }
 
   const deleteTodo = (todoSno) => {
