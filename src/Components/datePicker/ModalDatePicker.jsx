@@ -39,7 +39,7 @@ export default function ModalDatePicker(props) {
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
             showTimeSelect
-            format={"dd MMMM | HH:mm"}
+            dateFormat="MMMM d, yyyy h:mm aa"
             minDate={moment().toDate()}
           />
         </div>
